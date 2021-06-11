@@ -37,6 +37,7 @@ export default function App() {
     <>
       <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
       <SafeAreaView style={styles.container}>
+      {repositories.length ?
         <FlatList
           data={repositories}
           keyExtractor={repository => repository.id}
@@ -71,6 +72,10 @@ export default function App() {
             )
           }}
         />
+        : <View style={styles.emptyList}>
+        <Text style={styles.emptyListTitle}>Register a repository to see it </Text>
+        </View>
+      }
       </SafeAreaView>
     </>
   );
@@ -128,4 +133,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#7159c1",
     padding: 15,
   },
+
+  emptyList: {
+    padding: 32,
+    
+  },
+  emptyListTitle: {
+    color: '#fff',
+    fontSize: 32,
+    fontWeight: "bold",
+  }
 });
